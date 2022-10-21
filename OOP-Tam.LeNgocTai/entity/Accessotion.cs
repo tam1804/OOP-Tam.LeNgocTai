@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_Tam.LeNgocTai
+namespace OOP_Tam.LeNgocTai.entity
 {
-    public class Program
+    public class Accessotion
     {
-
     }
 }

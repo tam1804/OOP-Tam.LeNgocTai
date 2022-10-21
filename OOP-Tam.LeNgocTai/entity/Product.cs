@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_Tam.LeNgocTai
 {
-    public class Program
+    public class Product
     {
-
+        public int id { get; set; } 
+        public string name { get; set; }
+        public int categoryId { get; set; }
     }
 }
