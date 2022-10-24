@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,22 +19,22 @@ namespace OOP_Tam.LeNgocTai.Dao
         List<Category> categoryTable = new List<Category>();
         Database instants = new Database();
 
-        public void insertProductTable(baseEntity row)
+        public void insertProductTable(BaseEntity row)
         {
             var product = row as Product;
             productTable.Add(product);
         }
-        public void insertAccessotionTable(baseEntity row)
+        public void insertAccessotionTable(BaseEntity row)
         {
             var accessotion = row as Accessotion;
             accessotionTable.Add(accessotion);
         }
-        public void insertCategoryTable(baseEntity row)
+        public void insertCategoryTable(BaseEntity row)
         {
             var category = row as Category;
             categoryTable.Add(category);
         }
-        public void insertTable(string name, baseEntity row)
+        public void insertTable(string name, BaseEntity row)
         {
             if (name == "product")
             {
@@ -48,6 +49,10 @@ namespace OOP_Tam.LeNgocTai.Dao
                 insertCategoryTable(row);
             }
             
+        }
+        public List<Product> ListProducts()
+        {
+            return productTable;
         }
         public object selectTable(string name)
         {
@@ -65,19 +70,8 @@ namespace OOP_Tam.LeNgocTai.Dao
             }
             return null;
 
-
-
-            /* public static void Main() {
-
-
-             }*/
-
-
-
-
-
         }
-        public void updateTable(string name, baseEntity row)
+        public void updateTable(string name, BaseEntity row)
         {
             if(name == "product")
             {
@@ -93,36 +87,40 @@ namespace OOP_Tam.LeNgocTai.Dao
             }
             
         }
-        public void updateProductTable(int id,baseEntity row)
+        public void updateProductTable(int id,BaseEntity row)
         {
             for(int i = 0; i < productTable.Count; i++)
             {
+                var product = row as Product;
                 if (productTable[i].id == id)
                 {
-                    productTable[i].name =row.name;
-                    productTable[i].categoryId = id;
+                    productTable[i] = product;
                 }
             }
         }
-        public void updateAccessotionTable(int id, baseEntity row)
+        public void updateAccessotionTable(int id, BaseEntity row)
         {
             for( int i = 0; i < accessotionTable.Count; i++)
             {
+                var accessotion = row as Accessotion;
                 if (accessotionTable[i].id == id)
                 {
-                    accessotionTable[i].name =row.name;
+                    accessotionTable[i] = accessotion;
                 }
             }
         }
-        public void updateCategoryTable(int id, baseEntity row)
+        public void updateCategoryTable(int id, BaseEntity row)
         {
             for(int i = 0; i < categoryTable.Count; i++)
             {
-                if(categoryTable[i].id == id) 
-                { categoryTable[i].name =row.name; }
+                var category = row as Category;
+                if (categoryTable[i].id == id) 
+                {
+                    categoryTable[i] = category;
+                }
             }
         }
-        public void deleteTable(string name, baseEntity row)
+        public void deleteTable(string name, BaseEntity row)
         {
             if(name == "product")
             {
@@ -182,9 +180,22 @@ namespace OOP_Tam.LeNgocTai.Dao
                 accessotionTable.Clear();
             }
         }
-        public void updateTableById(int Id,baseEntity row)
+        public void updateTableById(int Id, BaseEntity row)
         {
-            
+            string name = row.name;
+            if (name == "product")
+            {
+                updateProductTable(Id, row);
+            }
+            if (name == "accessotion")
+            {
+                updateAccessotionTable(Id, row);
+            }
+            if (name == "category")
+            {
+                updateCategoryTable(Id, row);
+            }
+
         }
     }
 }

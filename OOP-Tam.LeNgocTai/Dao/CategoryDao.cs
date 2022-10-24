@@ -8,9 +8,23 @@ using OOP_Tam.LeNgocTai.Dao;
 
 namespace OOP_Tam.LeNgocTai.Dao
 {
-    public class CategoryDao : Database
+    public class CategoryDao
     {
-        Database databaseCategory = new Database();
-        databaseCategory
+        Database DataCategory = new Database();
+
+        public bool insert(Category row)
+        {
+            
+            try
+            {
+                DataCategory.insertTable("category", row);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
-}
+}   

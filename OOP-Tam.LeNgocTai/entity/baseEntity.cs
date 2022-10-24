@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Tam.LeNgocTai.entity
 {
-    public class baseEntity
+    public class BaseEntity
     {
         public string name { get; set; }
         public int id { get; set; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Tam.LeNgocTai
 {
-    public class Product : baseEntity
+    public class Product : BaseEntity
     {
         public int categoryId { get; set; }
     }

@@ -8,6 +8,9 @@ namespace OOP_Tam.LeNgocTai
 {
     public class Program
     {
+        static void Main(string[] args)
+        {
 
+        }
     }
 }

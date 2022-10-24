@@ -9,34 +9,34 @@ using OOP_Tam.LeNgocTai.entity;
 
 namespace OOP_Tam.LeNgocTai.demo
 {
-    public class DatabaseDemo : Database
+    public class DatabaseDemo 
     {
         DatabaseDemo instants = new DatabaseDemo();
         Database database = new Database();
-
-        public void insertTableTest(string name, baseEntity row)
-        {   
-            insertTable(name, row);
+        
+        public void insertTableTest(string name, BaseEntity row)
+        {
+            database.insertTable(name, row);
         }
         public object selectTableTest(string name)
         {
-            return selectTable(name);
+            return database.selectTable(name); 
         }
-        public void updateTableTest(string name, baseEntity row)
+        public void updateTableTest(string name, BaseEntity row)
         {
-            updateTable(name, row);
+            database.updateTable(name, row);
         }
-        public void deleteTableTest(string name, baseEntity row)
+        public void deleteTableTest(string name, BaseEntity row)
         {
-            deleteTable(name, row);
+            database.deleteTable(name, row);
         }
         public void truncateTablTest(string name)
         {
-            truncateTable(name);
+            database.truncateTable(name);
         }
-        public void updateTableByIdTest(int Id, baseEntity row)
+        public void updateTableByIdTest(int Id, BaseEntity row)
         {
-            updateTableById(Id, row);
+            database.updateTableById(Id, row);
         }
     }
 }

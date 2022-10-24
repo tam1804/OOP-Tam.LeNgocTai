@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Tam.LeNgocTai.entity
 {
-    public class Accessotion : baseEntity
+    public class Accessotion : BaseEntity
     {
         public string type { get; set; }
     }
