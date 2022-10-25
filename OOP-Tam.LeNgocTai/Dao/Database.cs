@@ -1,4 +1,5 @@
-﻿using OOP_Tam.LeNgocTai.entity;
+﻿using OOP_Tam.LeNgocTai.dao;
+using OOP_Tam.LeNgocTai.entity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,31 +11,38 @@ using System.Threading.Tasks;
 
 namespace OOP_Tam.LeNgocTai.Dao
 {
-    public class Database
+    public sealed class Database : BaseDao
     {
-
-
+        private Database() { }
         List<Product> productTable = new List<Product>();
         List<Accessotion> accessotionTable = new List<Accessotion>();
         List<Category> categoryTable = new List<Category>();
         Database instants = new Database();
-
-        public void insertProductTable(BaseEntity row)
+ /*       public sealed class Singleton
+        {
+            private Singleton() { }
+            static readonly Singleton _instance = new Singleton();
+            public static Singleton Instance => _instance;
+            private int _count = 0;
+            public void Increase() => _count++;
+            public int Count => _count;
+        }*/
+        protected void insertProductTable(BaseEntity row)
         {
             var product = row as Product;
             productTable.Add(product);
         }
-        public void insertAccessotionTable(BaseEntity row)
+        protected void insertAccessotionTable(BaseEntity row)
         {
             var accessotion = row as Accessotion;
             accessotionTable.Add(accessotion);
         }
-        public void insertCategoryTable(BaseEntity row)
+        protected void insertCategoryTable(BaseEntity row)
         {
             var category = row as Category;
             categoryTable.Add(category);
         }
-        public void insertTable(string name, BaseEntity row)
+        protected void insertTable(string name, BaseEntity row)
         {
             if (name == "product")
             {
@@ -47,14 +55,21 @@ namespace OOP_Tam.LeNgocTai.Dao
             if (name == "category")
             {
                 insertCategoryTable(row);
-            }
-            
+            } 
         }
         public List<Product> ListProducts()
         {
             return productTable;
         }
-        public object selectTable(string name)
+        public List<Accessotion> ListAccessotions()
+        {
+            return accessotionTable;
+        }
+        public List<Category> ListCategory()
+        {
+            return categoryTable;
+        }
+        protected object selectTable(string name)
         {
             if (name == "product")
             {
@@ -69,9 +84,8 @@ namespace OOP_Tam.LeNgocTai.Dao
                 return accessotionTable;
             }
             return null;
-
         }
-        public void updateTable(string name, BaseEntity row)
+        protected void updateTable(string name, BaseEntity row)
         {
             if(name == "product")
             {
@@ -87,7 +101,7 @@ namespace OOP_Tam.LeNgocTai.Dao
             }
             
         }
-        public void updateProductTable(int id,BaseEntity row)
+        protected void updateProductTable(int id,BaseEntity row)
         {
             for(int i = 0; i < productTable.Count; i++)
             {
@@ -98,7 +112,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void updateAccessotionTable(int id, BaseEntity row)
+        protected void updateAccessotionTable(int id, BaseEntity row)
         {
             for( int i = 0; i < accessotionTable.Count; i++)
             {
@@ -109,7 +123,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void updateCategoryTable(int id, BaseEntity row)
+        protected void updateCategoryTable(int id, BaseEntity row)
         {
             for(int i = 0; i < categoryTable.Count; i++)
             {
@@ -120,7 +134,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void deleteTable(string name, BaseEntity row)
+        protected void deleteTable(string name, BaseEntity row)
         {
             if(name == "product")
             {
@@ -135,7 +149,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 deleteAccessotion(row.id);
             }
         }
-        public void deleteProduct(int id)
+        protected void deleteProduct(int id)
         {
             for(int i = 0; i < productTable.Count; i++)
             {
@@ -145,7 +159,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void deleteCategory(int id)
+        protected void deleteCategory(int id)
         {
             for(int i = 0; i < categoryTable.Count; i++)
             {
@@ -155,7 +169,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void deleteAccessotion(int id)
+        protected void deleteAccessotion(int id)
         {
             for(int i = 0; i < accessotionTable.Count; i++)
             {
@@ -165,7 +179,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 }
             }
         }
-        public void truncateTable(string name)
+        protected void truncateTable(string name)
         {
             if(name == "product")
             {
@@ -180,7 +194,7 @@ namespace OOP_Tam.LeNgocTai.Dao
                 accessotionTable.Clear();
             }
         }
-        public void updateTableById(int Id, BaseEntity row)
+        protected void updateTableById(int Id, BaseEntity row)
         {
             string name = row.name;
             if (name == "product")
@@ -195,7 +209,6 @@ namespace OOP_Tam.LeNgocTai.Dao
             {
                 updateCategoryTable(Id, row);
             }
-
         }
     }
 }

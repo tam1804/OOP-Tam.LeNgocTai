@@ -1,18 +1,17 @@
-﻿using OOP_Tam.LeNgocTai.dao;
-using OOP_Tam.LeNgocTai.entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOP_Tam.LeNgocTai.Dao;
+using OOP_Tam.LeNgocTai.entity;
 
-namespace OOP_Tam.LeNgocTai.Dao
+namespace OOP_Tam.LeNgocTai.demo
 {
-    internal class ProductDAO : BaseDao
+    public class ProductDaoDemo
     {
         Database DataProduct = new Database();
-        public bool insert(BaseEntity row)
+        public bool insertTest(BaseEntity row)
         {
             try
             {
@@ -24,40 +23,40 @@ namespace OOP_Tam.LeNgocTai.Dao
                 return false;
             }
         }
-        public int update(BaseEntity row)
+        public int updateTest(BaseEntity row)
         {
             DataProduct.updateProductTable(row.id, row);
             return 0;
         }
-        public bool delete(BaseEntity row)
+        public bool deleteTest(BaseEntity row)
         {
             try
             {
                 DataProduct.deleteProduct(row.id);
-                return true;    
+                return true;
             }
             catch
             {
                 return false;
             }
         }
-        public object findAll()
+        public object findAllTest()
         {
             return DataProduct.selectTable("product");
         }
         public object findById(int id)
         {
             int n = DataProduct.ListProducts().Count;
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-                if(id == DataProduct.ListProducts()[i].id)
+                if (id == DataProduct.ListProducts()[i].id)
                 {
-                   return DataProduct.ListProducts()[i];
+                    return DataProduct.ListProducts()[i];
                 }
                 return null;
-            } 
+            }
         }
-        public object findByName(string name)
+        public object findByNameTest(string name)
         {
             int n = DataProduct.ListProducts().Count;
             for (int i = 0; i < n; i++)
@@ -69,6 +68,5 @@ namespace OOP_Tam.LeNgocTai.Dao
                 return null;
             }
         }
-
     }
 }
