@@ -18,6 +18,9 @@ namespace OOP_Tam.LeNgocTai.Dao
         List<Accessotion> accessotionTable = new List<Accessotion>();
         List<Category> categoryTable = new List<Category>();
         Database instants = new Database();
+        protected const string PRODUCT = "product";
+        protected const string CATEGORY = "category";
+        protected const string ACCESOTION = "accessotion";
  /*       public sealed class Singleton
         {
             private Singleton() { }
@@ -71,15 +74,15 @@ namespace OOP_Tam.LeNgocTai.Dao
         }
         protected object selectTable(string name)
         {
-            if (name == "product")
+            if (name == PRODUCT)
             {
                 return productTable;
             }
-            if (name == "category")
+            if (name == CATEGORY)
             {
                 return categoryTable;
             }
-            if (name == "accessory")
+            if (name == ACCESOTION)
             {
                 return accessotionTable;
             }
@@ -87,15 +90,15 @@ namespace OOP_Tam.LeNgocTai.Dao
         }
         protected void updateTable(string name, BaseEntity row)
         {
-            if(name == "product")
+            if(name == PRODUCT)
             {
                 updateProductTable(row.id, row);
             } 
-            if(name == "accessotion")
+            if(name == ACCESOTION)
             {
                 updateAccessotionTable(row.id, row);
             }
-            if(name == "category")
+            if(name == CATEGORY)
             {
                 updateCategoryTable(row.id, row);
             }
@@ -136,15 +139,15 @@ namespace OOP_Tam.LeNgocTai.Dao
         }
         protected void deleteTable(string name, BaseEntity row)
         {
-            if(name == "product")
+            if(name == PRODUCT)
             {
                 deleteProduct(row.id);
             }
-            if(name == "category")
+            if(name == CATEGORY)
             {
                 deleteCategory(row.id);
             }
-            if(name == "accessotion")
+            if(name == ACCESOTION)
             {
                 deleteAccessotion(row.id);
             }
@@ -181,15 +184,15 @@ namespace OOP_Tam.LeNgocTai.Dao
         }
         protected void truncateTable(string name)
         {
-            if(name == "product")
+            if(name == PRODUCT)
             {
                 productTable.Clear();
             }
-            if(name == "category")
+            if(name == CATEGORY)
             {
                 categoryTable.Clear();
             }
-            if(name == "accessotion")
+            if(name == ACCESOTION)
             {
                 accessotionTable.Clear();
             }
@@ -197,15 +200,15 @@ namespace OOP_Tam.LeNgocTai.Dao
         protected void updateTableById(int Id, BaseEntity row)
         {
             string name = row.name;
-            if (name == "product")
+            if (name == PRODUCT)
             {
                 updateProductTable(Id, row);
             }
-            if (name == "accessotion")
+            if (name == ACCESOTION)
             {
                 updateAccessotionTable(Id, row);
             }
-            if (name == "category")
+            if (name == CATEGORY)
             {
                 updateCategoryTable(Id, row);
             }
