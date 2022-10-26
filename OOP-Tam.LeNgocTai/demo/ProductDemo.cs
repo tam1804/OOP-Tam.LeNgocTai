@@ -15,7 +15,6 @@ namespace OOP_Tam.LeNgocTai
             Console.WriteLine(product.id);
             Console.WriteLine(product.categoryId);
         }
-
         static Product createProductTest()
         {   
             Product productSystemIn = new Product ();

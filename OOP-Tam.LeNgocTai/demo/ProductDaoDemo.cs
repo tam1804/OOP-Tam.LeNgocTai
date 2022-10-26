@@ -11,6 +11,7 @@ namespace OOP_Tam.LeNgocTai.demo
     public class ProductDaoDemo
     {
         Database DataProduct = new Database();
+
         public bool insertTest(BaseEntity row)
         {
             try

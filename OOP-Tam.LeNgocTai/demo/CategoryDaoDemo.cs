@@ -10,13 +10,12 @@ using OOP_Tam.LeNgocTai.entity;
 namespace OOP_Tam.LeNgocTai.demo
 {
     public class CategoryDaoDemo
-    {
-        Database DataCategory = new Database();
+    {   
         public bool insertTest(BaseEntity row)
         {
             try
             {
-                DataCategory.insertCategoryTable(row);
+                Database.Instaint.insertCategoryTable(row);
                 return true;
             }
             catch
@@ -26,11 +25,11 @@ namespace OOP_Tam.LeNgocTai.demo
         }
         public object findAllTest()
         {
-           return DataCategory.selectTable("category");
+            return Database.Instaint.selectTable("category");
         }
         public void updateTest(BaseEntity row)
         {
-            DataCategory.updateCategoryTable(row.id, row); 
+            Database.Instaint.updateCategoryTable(row.id, row); 
         }
     }
 }

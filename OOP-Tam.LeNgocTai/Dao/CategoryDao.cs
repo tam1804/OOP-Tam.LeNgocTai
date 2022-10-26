@@ -11,20 +11,6 @@ namespace OOP_Tam.LeNgocTai.Dao
 {
     public class CategoryDao : BaseDao
     {
-        Database DataCategory = new Database();
-
-        public bool insert(Category row)
-        { 
-            try
-            {
-                DataCategory.insertTable("category", row);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
     }
 }   
